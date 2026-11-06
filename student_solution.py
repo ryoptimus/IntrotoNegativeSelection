@@ -42,7 +42,11 @@ def anom_scores(fp):
         res = subprocess.run(args=args, stdin=f, stdout=subprocess.PIPE, stderr=subprocess.PIPE,)
     if res.returncode != 0:
         raise RuntimeError(res.stderr)
-    print(res.stdout)
+    score_tup = tuple()
+    for val in res.stdout.strip():
+        score_tup += (val,)
+
+    return score_tup
 
 def final_anom(fp):
     print(f"Yay final_anom({fp})!")
