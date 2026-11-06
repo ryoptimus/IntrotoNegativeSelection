@@ -60,17 +60,17 @@ def final_anom(fp):
     print(f"Yay final score {a_sum:.2f}!")
     return a_sum
 
-def auc_calc(fp):
-    print(f"Yay auc_calc({fp})!")
-    # Int threshold vals range(0, 11)
-    # call fptpcalc to get roc point in (FPR, TPR) form
-    # Use the trapezoidal rule to calculate the area under the ROC curve. You may implement the trapezoidal rule manually or use sklearn.metrics.auc
-
 def fp_tp_calc(fp, theta):
     print(f"Yay fp_tp_calc({fp}, {theta})!")
     # FPR = normal instances with score > theta / total normal instances
     # TPR = anomalous instances with score > theta / total anomalous instances
     # RETURN: (fpr, tpr)
+
+def auc_calc(fp):
+    print(f"Yay auc_calc({fp})!")
+    # Int threshold vals range(0, 11)
+    # call fptpcalc to get roc point in (FPR, TPR) form
+    # Use the trapezoidal rule to calculate the area under the ROC curve. You may implement the trapezoidal rule manually or use sklearn.metrics.auc
 
 def main():
     print("Hello world!")
