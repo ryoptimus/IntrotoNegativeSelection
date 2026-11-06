@@ -60,8 +60,19 @@ def final_anom(fp):
     print(f"Yay final score {a_sum:.2f}!")
     return a_sum
 
+def get_labels():
+    label_tup = tuple()
+    with open(LABEL_FILE, "r", encoding="utf-8") as f:
+        for l in f:
+            label_tup += (int(l.strip()),)
+
+    return label_tup
+
 def fp_tp_calc(fp, theta):
     print(f"Yay fp_tp_calc({fp}, {theta})!")
+    l_vals = get_labels()
+
+    # How to determine normal vs anomaly? Get labels
     # FPR = normal instances with score > theta / total normal instances
     # TPR = anomalous instances with score > theta / total anomalous instances
     # RETURN: (fpr, tpr)
@@ -77,6 +88,7 @@ def main():
     for tf in TEST_FILES:
         tfp = Path(tf)
         fa_res = round(final_anom(tfp), 2)
+        fp_tp_calc(tfp, 2)
 
 if __name__ == "__main__":
     main()
